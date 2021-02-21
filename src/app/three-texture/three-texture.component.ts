@@ -34,6 +34,11 @@ export class ThreeTextureComponent implements OnInit {
       const material = new THREE.MeshBasicMaterial({ map: texture });
       const mesh = new THREE.Mesh(geometry, material);
 
+      this.threejs.appendAnimation( () => {
+        mesh.rotation.x += 0.01
+        mesh.rotation.y += 0.01
+      })
+
       scene.add(mesh)
     })
 

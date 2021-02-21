@@ -16,15 +16,18 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const scene: THREE.Scene = new THREE.Scene()
 
 // CONTROLS
-const controls = new OrbitControls( camera, renderer.domElement );
-controls.addEventListener( 'change', render );
-controls.target.set( 0, 0, 0 );
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.addEventListener('change', render);
+controls.target.set(0, 0, 0);
 controls.minZoom = 0.5;
 controls.maxZoom = 4;
 controls.update();
 
+const animations: { (): void }[] = []
+
 export function animate() {
-  renderer.render(scene, camera);
+  animations.forEach(a => a())
+  render()
   requestAnimationFrame(animate);
 }
 
@@ -35,7 +38,7 @@ export function onWindowResize() {
 }
 
 export function render() {
-  renderer.render( scene, camera );
+  renderer.render(scene, camera);
 }
 
 window.addEventListener('resize', onWindowResize);
@@ -47,14 +50,18 @@ export class ThreejsService {
 
   constructor() { }
 
-  public appendRendererTo (container: HTMLDivElement) {
+  public appendRendererTo(container: HTMLDivElement) {
     if (container != null) {
       container.appendChild(renderer.domElement);
     }
   }
 
-  public addToScene ( apply: (scene: THREE.Scene) => void ) {
+  public addToScene(apply: (scene: THREE.Scene) => void) {
     apply(scene)
+  }
+
+  public appendAnimation(animation: () => void) {
+    animations.push(animation)
   }
 
   public start() {
