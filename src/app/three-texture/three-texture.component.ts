@@ -6,7 +6,7 @@ const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(30, window.i
 const renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({ antialias: true });
 const scene: THREE.Scene = new THREE.Scene()
 
-// load a texture, set wrap mode to repeat
+// cube texture as scene background
 const loader = new THREE.CubeTextureLoader();
 loader.setPath( '../../assets/' );
 const textureCube = loader.load( [
@@ -14,12 +14,12 @@ const textureCube = loader.load( [
 	'hi.png', 'hi.png',
 	'hi.png', 'hi.png'
 ] );
+scene.background = textureCube
 
-var geometry = new THREE.SphereGeometry(1, 20, 20);
-var material = new THREE.MeshBasicMaterial({
-  envMap: textureCube
-});
-var sphere = new THREE.Mesh(geometry, material);
+const texture = new THREE.TextureLoader().load( '../../assets/hi.png' );
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial( { map: texture } );
+const mesh = new THREE.Mesh( geometry, material );
 
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.addEventListener( 'change', render );
@@ -29,9 +29,9 @@ controls.maxZoom = 4;
 controls.update();
 
 export function animate() {
-  sphere.rotation.x += 0.01;
-  sphere.rotation.y += 0.01;
-  sphere.rotation.z += 0.01;
+  mesh.rotation.x += 0.01;
+  mesh.rotation.y += 0.01;
+  mesh.rotation.z += 0.01;
 
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
@@ -88,7 +88,7 @@ export class ThreeTextureComponent implements OnInit {
     window.addEventListener('resize', onWindowResize);
 
     // add cube
-    group.add(sphere);
+    group.add(mesh);
 
     // ANIMATE
     animate()
