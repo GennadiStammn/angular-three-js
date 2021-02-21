@@ -1,9 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1500);
 const renderer: THREE.WebGLRenderer = new THREE.WebGLRenderer({ antialias: true });
 const scene: THREE.Scene = new THREE.Scene()
+
+const controls = new OrbitControls( camera, renderer.domElement );
+controls.addEventListener( 'change', render );
+controls.target.set( 0, 0, 0 );
+controls.minZoom = 0.5;
+controls.maxZoom = 4;
+controls.update();
+
+export function render() {
+
+  renderer.render( scene, camera );
+
+}
 
 export function animate() {
   renderer.render(scene, camera);

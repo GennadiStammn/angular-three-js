@@ -71,10 +71,6 @@ export class ThreeTextureComponent implements OnInit {
 
     // SCENE
 
-    // LIGHTS
-    const pointLight = new THREE.PointLight(0xff0000, 2);
-    scene.add(pointLight);
-
     // GROUP
     let group = new THREE.Group();
     scene.add(group);
