@@ -26,7 +26,6 @@ export class ThreeGeometriesComponent implements OnInit {
   constructor() {
   }
 
-
   ngOnInit(): void {
     // CREATE DIV FOR 3D CANVAS
     const container = document.createElement('div')

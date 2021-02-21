@@ -1,9 +1,9 @@
-import { ThreeGeometriesComponent } from './three-geometries/three-geometries.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { ThreeTextureComponent } from './three-texture/three-texture.component';
 
 const routes: Routes = [{
-  path: '**', component: ThreeGeometriesComponent
+  path: '**', component: ThreeTextureComponent
 }];
 
 @NgModule({
