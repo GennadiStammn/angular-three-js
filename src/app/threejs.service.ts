@@ -24,11 +24,18 @@ controls.maxZoom = 4;
 controls.update();
 
 const animations: { (): void }[] = []
+const mixers: THREE.AnimationMixer[] = []
+const clock = new THREE.Clock();
 
 export function animate() {
-  animations.forEach(a => a())
-  render()
   requestAnimationFrame(animate);
+
+  animations.forEach(a => a())
+
+  var delta = clock.getDelta();
+  mixers.forEach( mixer => mixer.update(delta) )
+
+  render()
 }
 
 export function onWindowResize() {
@@ -62,6 +69,10 @@ export class ThreejsService {
 
   public appendAnimation(animation: () => void) {
     animations.push(animation)
+  }
+
+  public appendMixer(mixer: THREE.AnimationMixer) {
+    mixers.push(mixer)
   }
 
   public start() {

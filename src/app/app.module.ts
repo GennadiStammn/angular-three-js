@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ThreeGeometriesComponent } from './three-geometries/three-geometries.component';
 import { ThreeTextureComponent } from './three-texture/three-texture.component';
 import { ThreeLightsComponent } from './three-lights/three-lights.component';
+import { ThreeGltfLoaderComponent } from './three-gltf-loader/three-gltf-loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThreeGeometriesComponent,
     ThreeTextureComponent,
-    ThreeLightsComponent
+    ThreeLightsComponent,
+    ThreeGltfLoaderComponent
   ],
   imports: [
     BrowserModule,
