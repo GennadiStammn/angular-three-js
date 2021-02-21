@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ThreeGeometriesComponent } from './three-geometries/three-geometries.component';
 import { ThreeTextureComponent } from './three-texture/three-texture.component';
+import { ThreeLightsComponent } from './three-lights/three-lights.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ThreeGeometriesComponent,
-    ThreeTextureComponent
+    ThreeTextureComponent,
+    ThreeLightsComponent
   ],
   imports: [
     BrowserModule,

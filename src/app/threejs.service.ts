@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 // CAMERA
 const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 1, 1500);
-camera.position.set(0, 4, 7);
+camera.position.set(0, 5, 5);
 camera.lookAt(0, 0, 0);
 
 // RENDERER
