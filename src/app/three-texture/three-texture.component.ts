@@ -16,7 +16,7 @@ const textureCube = loader.load( [
 ] );
 scene.background = textureCube
 
-const texture = new THREE.TextureLoader().load( '../../assets/hi.png' );
+const texture = new THREE.TextureLoader().load( '../../assets/oh.png' );
 const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshBasicMaterial( { map: texture } );
 const mesh = new THREE.Mesh( geometry, material );
