@@ -29,33 +29,25 @@ export class ThreeGeometriesComponent implements OnInit {
       scene.add(cube);
 
       // add cone
-      const geometryCone = new THREE.ConeGeometry(0.5);
+      const geometryCone = new THREE.ConeGeometry(0.5, 1, 32);
       const materialCone = new THREE.MeshBasicMaterial({ color: 0x00ffff });
       const cone = new THREE.Mesh(geometryCone, materialCone);
+      cone.position.z = 2
       scene.add(cone);
 
       // add sphere
-      const geometrySphere = new THREE.SphereGeometry(0.75);
+      const geometrySphere = new THREE.SphereGeometry(0.75, 32, 32);
       const materialSphere = new THREE.MeshBasicMaterial({ color: 0xffff00 })
       const sphere = new THREE.Mesh(geometrySphere, materialSphere);
       sphere.position.x = 2;
       scene.add(sphere)
 
       // add torus
-      const geometryTorus = new THREE.TorusGeometry(0.5, 0.1);
+      const geometryTorus = new THREE.TorusGeometry(0.5, 0.1, 16, 32);
       const materialTorus = new THREE.MeshBasicMaterial({ color: 0xffa500 })
       const torus = new THREE.Mesh(geometryTorus, materialTorus);
       torus.position.z = -2
       scene.add(torus)
-
-
-      // add torus
-      const geometryTetrahedron = new THREE.TetrahedronGeometry(0.5)
-      const materialTetrahedron = new THREE.MeshBasicMaterial({ color: 0x8800ff })
-      const tetrahedron = new THREE.Mesh(geometryTetrahedron, materialTetrahedron);
-      tetrahedron.position.z = 2
-      tetrahedron.rotation.y += 0.7
-      scene.add(tetrahedron)
     })
 
     this.threejs.start()

@@ -18,15 +18,6 @@ export class ThreeTextureComponent implements OnInit {
     this.threejs.appendRendererTo(container)
 
     this.threejs.addToScene((scene: THREE.Scene) => {
-      // BACKGROUND
-      const loader = new THREE.CubeTextureLoader();
-      loader.setPath('../../assets/');
-      const textureCube = loader.load([
-        'hi.png', 'hi.png',
-        'hi.png', 'hi.png',
-        'hi.png', 'hi.png'
-      ]);
-      scene.background = textureCube
 
       // BOX WITH TEXTURE
       const texture = new THREE.TextureLoader().load('../../assets/oh.png');
