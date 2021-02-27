@@ -23,28 +23,28 @@ export class ThreeGeometriesComponent implements OnInit {
 
       // add cube
       const geometryCube = new THREE.BoxGeometry();
-      const materialCube = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+      const materialCube = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // green
       const cube = new THREE.Mesh(geometryCube, materialCube);
       cube.position.x = -2
       scene.add(cube);
 
       // add cone
       const geometryCone = new THREE.ConeGeometry(0.5, 1, 32);
-      const materialCone = new THREE.MeshBasicMaterial({ color: 0x00ffff });
+      const materialCone = new THREE.MeshBasicMaterial({ color: 0x00ffff }); // blue
       const cone = new THREE.Mesh(geometryCone, materialCone);
       cone.position.z = 2
       scene.add(cone);
 
       // add sphere
       const geometrySphere = new THREE.SphereGeometry(0.75, 32, 32);
-      const materialSphere = new THREE.MeshBasicMaterial({ color: 0xffff00 })
+      const materialSphere = new THREE.MeshBasicMaterial({ color: 0xffff00 }) // yellow
       const sphere = new THREE.Mesh(geometrySphere, materialSphere);
       sphere.position.x = 2;
       scene.add(sphere)
 
       // add torus
       const geometryTorus = new THREE.TorusGeometry(0.5, 0.1, 16, 32);
-      const materialTorus = new THREE.MeshBasicMaterial({ color: 0xffa500 })
+      const materialTorus = new THREE.MeshBasicMaterial({ color: 0xffa500 }) // torus
       const torus = new THREE.Mesh(geometryTorus, materialTorus);
       torus.position.z = -2
       scene.add(torus)
