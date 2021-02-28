@@ -7,6 +7,7 @@ import { ThreeGeometriesComponent } from './three-geometries/three-geometries.co
 import { ThreeTextureComponent } from './three-texture/three-texture.component';
 import { ThreeLightsComponent } from './three-lights/three-lights.component';
 import { ThreeGltfLoaderComponent } from './three-gltf-loader/three-gltf-loader.component';
+import { ThreePhysicsComponent } from './three-physics/three-physics.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ThreeGltfLoaderComponent } from './three-gltf-loader/three-gltf-loader.
     ThreeGeometriesComponent,
     ThreeTextureComponent,
     ThreeLightsComponent,
-    ThreeGltfLoaderComponent
+    ThreeGltfLoaderComponent,
+    ThreePhysicsComponent
   ],
   imports: [
     BrowserModule,

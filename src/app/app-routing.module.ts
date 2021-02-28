@@ -1,3 +1,4 @@
+import { ThreePhysicsComponent } from './three-physics/three-physics.component';
 import { ThreeGltfLoaderComponent } from './three-gltf-loader/three-gltf-loader.component';
 import { ThreeLightsComponent } from './three-lights/three-lights.component';
 import { ThreeGeometriesComponent } from './three-geometries/three-geometries.component';
@@ -6,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ThreeTextureComponent } from './three-texture/three-texture.component';
 
 const routes: Routes = [{
+  path: 'physics', component: ThreePhysicsComponent
+},{
   path: 'gltfloader', component: ThreeGltfLoaderComponent
 },
 {
@@ -15,7 +18,7 @@ const routes: Routes = [{
 }, {
   path: 'texture', component: ThreeTextureComponent
 }, {
-  path: '**', component: ThreeGltfLoaderComponent
+  path: '**', component: ThreePhysicsComponent
 }];
 
 @NgModule({
