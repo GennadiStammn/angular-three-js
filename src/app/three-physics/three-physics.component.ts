@@ -9,7 +9,7 @@ import { Project, Scene3D, PhysicsLoader } from 'enable3d'
 export class ThreePhysicsComponent extends Scene3D implements OnInit {
 
   constructor() {
-    super('MainScene')
+    super()
   }
 
   async init() {
