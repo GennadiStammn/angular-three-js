@@ -2,6 +2,7 @@ import { ThreejsService } from './../threejs.service';
 import { Component, OnInit } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
 @Component({
   selector: 'app-three-gltf-loader',
@@ -10,7 +11,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 })
 export class ThreeGltfLoaderComponent implements OnInit {
 
-  loader = new GLTFLoader();
+  gltfLoader = new GLTFLoader();
+  objLoader = new OBJLoader();
 
   constructor(private threejs: ThreejsService) { }
 
@@ -22,12 +24,31 @@ export class ThreeGltfLoaderComponent implements OnInit {
 
     this.threejs.addToScene((scene) => {
 
-      this.loader.loadAsync('../../assets/cesiumman/CesiumMan.glb').then((gltf) => {
+      this.gltfLoader.loadAsync('../../assets/cesiumman/CesiumMan.glb').then((gltf) => {
         var mixer = new THREE.AnimationMixer(gltf.scene);
         var action = mixer.clipAction(gltf.animations[0]);
         action.play();
         scene.add(gltf.scene);
         this.threejs.appendMixer(mixer)
+      })
+
+      // OBJ LOADER
+      let object;
+      function loadModel() {
+        object.traverse(function (child) {
+          if (child.isMesh) child.material.map = texture;
+        });
+        object.position.x = - 2;
+        scene.add(object);
+      }
+      const manager = new THREE.LoadingManager(loadModel);
+      manager.onProgress = function (item, loaded, total) {
+        console.log(item, loaded, total);
+      };
+      const textureLoader = new THREE.TextureLoader(manager);
+      const texture = textureLoader.load('../../assets/chr_knight.png')
+      this.objLoader.loadAsync('../../assets/chr_knight.obj').then((obj) => {
+        object = obj;
       })
 
       // White directional light at half intensity shining from the top.
