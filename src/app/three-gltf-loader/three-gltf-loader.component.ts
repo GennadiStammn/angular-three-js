@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 
 @Component({
   selector: 'app-three-gltf-loader',
@@ -50,6 +51,23 @@ export class ThreeGltfLoaderComponent implements OnInit {
       this.objLoader.loadAsync('../../assets/chr_knight.obj').then((obj) => {
         object = obj;
       })
+
+      // OBJ with material
+      new MTLLoader( manager )
+      .load( '../../assets/chr_knight.mtl', function ( materials ) {
+
+        materials.preload();
+
+        new OBJLoader( manager )
+          .setMaterials( materials )
+          .load( '../../assets/chr_knight.obj', function ( object ) {
+
+            object.position.x = 2
+            scene.add( object );
+
+          });
+
+      } );
 
       // White directional light at half intensity shining from the top.
       const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
