@@ -69,6 +69,23 @@ export class ThreeGltfLoaderComponent implements OnInit {
 
       } );
 
+      // OBJ with material
+      new MTLLoader( manager )
+      .load( '../../assets/church.mtl', function ( materials ) {
+
+        materials.preload();
+
+        new OBJLoader( manager )
+          .setMaterials( materials )
+          .load( '../../assets/church.obj', function ( object ) {
+
+            object.position.z = -2
+            scene.add( object );
+
+          });
+
+      } );
+
       // White directional light at half intensity shining from the top.
       const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
       directionalLight.position.y += 5
